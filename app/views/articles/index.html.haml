@@ -1,0 +1,9 @@
+%h1 Articles
+%table
+  %tr
+    %th Title
+    %th Text
+  - @articles.each do |article|
+    %tr
+      %td= article.title
+      %td= article.text

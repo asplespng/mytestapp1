@@ -1,0 +1,6 @@
+= simple_form_for :article, url: articles_path do |f|
+  .form-inputs
+    = f.input :title
+    = f.input :text, as: :text
+    = f.button :submit
+  
