@@ -3,5 +3,18 @@
   = @article.title
 %br
   = @article.text
+%h2 Comments:
+%ul
+- @article.comments.each do |comment|
+  %li 
+    %strong= comment.commenter
+    = comment.body
+%h2 Add a comment:
+= simple_form_for([@article, @article.comments.build]) do |f|
+  .form-inputs
+    = f.input :commenter
+    = f.input :body, as: :text
+    = f.button :submit
 %br
   = link_to 'Back', articles_path
+  
