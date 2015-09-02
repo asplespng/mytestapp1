@@ -1,9 +1,12 @@
 %h1 Articles
 = link_to 'New Article', new_article_path
-%table
+%table.table-striped
   %tr
     %th Title
     %th Text
+    %th
+    %th
+    %th
   - @articles.each do |article|
     %tr
       %td= article.title
