@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+  resources :users
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
