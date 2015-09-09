@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   end
   def show
     @article = Article.find( params[:id] )
+    authorize @article
   end
   
   def new
@@ -22,6 +23,7 @@ class ArticlesController < ApplicationController
   end
   def update
     @article = Article.find( params[:id] )
+    authorize @article
     if @article.update(article_params)
       redirect_to @article
     else
