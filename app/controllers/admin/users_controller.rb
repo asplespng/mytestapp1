@@ -25,6 +25,10 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_path
   end
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:alert] = 'The object you tried to access does not exist'
+  redirect_to action: :index
+end
   private
   def user_params
     params.require( :user ).permit(:email, :first_name, :last_name, :role)
