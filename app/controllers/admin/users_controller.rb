@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+#     @users = User.all
+    @users = policy_scope(User)
   end
   def show
     @user = User.find(params[:id])
@@ -14,7 +15,7 @@ class Admin::UsersController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update_attributes(permitted_attributes(@user))
       redirect_to [:admin, @user]
     else
       render 'edit'
