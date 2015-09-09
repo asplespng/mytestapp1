@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @user] do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    = f.input :first_name, required: true
+    = f.input :last_name, required: true
+    = f.input :role, collection: User.roles.keys.map {|role| [role.capitalize, role] }, include_blank: false
+    = f.button :submit, "Update"
