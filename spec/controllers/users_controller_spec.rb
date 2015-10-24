@@ -5,12 +5,14 @@ describe Admin::UsersController do
       
     end
     context "with invalid role" do
-      it "does not update user role" do
+      it "raises UnpermittedParameters exception" do
         @user = FactoryGirl.create :user, :user
         sign_in @user
-        put :update, id: @user.id, user: {role: :administrator}
-        @user.reload
-        expect(@user.role).to eq('user')
+        expect {
+          put :update, id: @user.id, user: {role: :administrator}
+        }.to raise_error(ActionController::UnpermittedParameters)
+#         @user.reload
+#         expect(@user.role).to eq('user')
       end
     end
     context "with valid role" do
