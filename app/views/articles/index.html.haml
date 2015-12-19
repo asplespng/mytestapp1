@@ -1,11 +1,11 @@
 %h1 Articles
 = link_to 'New Article', new_article_path, class: 'btn-default btn-sm'
 %p
-%table#grid.table.table-condensed.table-hover.table-striped
+%table#grid-basic.table.table-condensed.table-hover.table-striped
   %thead
     %tr
-    %th{"data-column-id" => "Title", "data-identifier" =>"true"} Title
-    %th{"data-column-id" => "Text"} Text
+      %th{"data-column-id" => "Title", "data-order": "desc", "data-identifier": "true"} Title
+      %th{"data-column-id" => "Text"} Text
   - @articles.each do |article|
     %tr
       %td= article.title
